@@ -1,1 +1,64 @@
-<p>car works!</p>
+
+<div class="col-12 mt-2 width-1220">
+  <div class='row'>
+    <div class='col-4'>
+      <button class='btn btn-primary btn-sm' type='button'>
+        <fa-icon [icon]='faPlus'></fa-icon> Adaugă
+      </button>
+    </div>
+    <div class='col-4'>
+      <h4 class='text-center'>Mașini</h4>
+    </div>
+    <div class='col-4'></div>
+  </div>
+
+  <div class='row'>
+    <div class='col-12 width-1220'>
+      <table class='table table-striped table-hover'>
+        <thead>
+        <tr class='table-bordered'>
+          <th width='60px' rowspan='2'>Nr. Crt.</th>
+          <th width='160px'>Nr. înmatriculare</th>
+          <th width='240px'>Marcă</th>
+          <th width='260px'>Model</th>
+          <th width='120px'>An fabricație</th>
+          <th width='140px'>Capacitate motor</th>
+          <th>Impozit</th>
+          <th rowspan='2' width='70px'></th>
+        </tr>
+        </thead>
+      </table>
+    </div>
+
+    <div class='col-12 position-relative width-1220'>
+      <div id='view' class='view-scroll-informations' style='max-height: 60vh;' [scrollWindow]='false' infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="30">
+        <button type='button' id='back-top'>
+          <fa-icon [icon]='faChevronUp'></fa-icon>
+        </button>
+        <table class='table table-hover table-striped table-bordered font-14 p-0'>
+          <tbody>
+          <tr class='cursor-pointer'>
+            <td width='60px' class='text-center'>1</td>
+            <td width='160px' class='text-center'></td>
+            <td width='240px' class='text-center'></td>
+            <td width='260px' class='text-center'></td>
+            <td width='120px' class='text-center'></td>
+            <td width='140px' class='text-center'></td>
+            <td></td>
+            <td width='40x' class='text-center' matTooltip='Modificare' matTooltipPosition='left'>
+              <fa-icon class='text-primary' [icon]='faEdit'></fa-icon>
+            </td>
+            <td width='30px' class='text-center' matTooltip='Ștergere' matTooltipPosition='left'>
+              <fa-icon class='text-danger' [icon]='faTrashAlt'></fa-icon>
+            </td>
+          </tr>
+          <!--          <tr colspan='15' class='text-center fw-bold'>-->
+          <!--            <td>Date inexistente!</td>-->
+          <!--          </tr>-->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

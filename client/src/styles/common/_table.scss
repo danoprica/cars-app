@@ -12,7 +12,7 @@
     vertical-align: middle !important;
     padding: 0 !important;
     background-color: #fcf8e3 !important;
-    font-size: 12px;
+    font-size: 16px;
   }
 
   td {
@@ -20,9 +20,9 @@
     vertical-align: middle !important;
     min-width: 20px;
     max-height: 44px;
-    font-size: 12px;
     padding-left: 2px;
     word-break: break-word;
+    font-size: 16px;
   }
 
 }
@@ -65,10 +65,6 @@
 ::-webkit-scrollbar-thumb {
   background-color: #7c7c7c;
   border-radius: 2px;
-}
-
-#view {
-  overflow-y: scroll;
 }
 
 #back-top {
