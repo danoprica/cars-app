@@ -13,16 +13,16 @@ module.exports = db => {
         },
 
         findAll: (req, res) => {
-            db.query(`SELECT id, name, type, CASE WHEN liked IS TRUE THEN 'Da' ELSE 'Nu' END AS liked
-      FROM "Car"
-      ORDER BY id`, { type: db.QueryTypes.SELECT }).then(resp => {
+            db.query(`SELECT id, brand_name, model_name type, production_year, engine, tax
+            FROM "Car"
+            ORDER BY id`, { type: db.QueryTypes.SELECT }).then(resp => {
                 res.send(resp);
             }).catch(() => res.status(401));
         },
 
         find: (req, res) => {
-            db.query(`SELECT id, name, type, liked
-      FROM "Car"`, { type: db.QueryTypes.SELECT }).then(resp => {
+            db.query(`SELECT id, brand_name, model_name type, production_year, engine, tax
+            FROM "Car"`, { type: db.QueryTypes.SELECT }).then(resp => {
                 res.send(resp[0]);
             }).catch(() => res.status(401));
         },
