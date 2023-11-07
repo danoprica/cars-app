@@ -14,12 +14,16 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
+import { PersonComponent } from './components/person/person.component';
+import { CarComponent } from './components/car/car.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    PersonComponent,
+    CarComponent
   ],
   imports: [
     BrowserModule,
