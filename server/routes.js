@@ -5,8 +5,9 @@ module.exports = app => {
   const path         = require('path');
   const errors       = require('./errors');
 
-  /* LOGIN */
-  //app.use('/api/information', require('./routes/information')(app));
+
+  app.use('/api/car', require('./routes/carRoutes')(app));
+  app.use('/api/person', require('./routes/personRoutes')(app));
 
   app.route('*/:url(api|auth|components|app|bower_components|assets)/*').get(errors[404]);
 
