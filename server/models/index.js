@@ -29,8 +29,10 @@ module.exports = function getModels(sequelize, Sequelize) {
   getFilesRecursive(__dirname);
 
   const arr = [
+    /************************ Person *********************/
+    {path: __dirname + '/person.js', sync: true},
     /************************ Car *********************/
-    {path: __dirname + '/car.js', sync: true},
+    {path: __dirname + '/car.js', sync: true}
   ];
 
   const syncTables = [];
