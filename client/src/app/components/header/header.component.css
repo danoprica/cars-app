@@ -1,0 +1,73 @@
+.header {
+  padding: 0px 0;
+  background-image: linear-gradient(#d4d4d4, #ffffff);
+}
+.header .logo {
+  background: url(../../../assets/images/logo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0px;
+  margin: 0px;
+  width: 100px;
+  height: 47px;
+}
+.header a, .header .item {
+  padding: 0 6px;
+  color: #777;
+  cursor: pointer;
+  text-decoration: none;
+}
+.header a:hover, .header .item:hover {
+  color: #0a58ca !important;
+  text-decoration: underline;
+}
+.header .dropdown {
+  display: inline-block;
+}
+.header .dropdown .dropdown-item {
+  font-size: 14px;
+  padding: 3px 10px;
+  display: block;
+  width: 100%;
+  clear: both;
+  font-weight: 400;
+  color: #777;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.header .dropdown button {
+  padding: 0 6px;
+  box-shadow: none;
+  font-size: 14px;
+  background-color: transparent;
+  color: #777;
+  border: none;
+  padding-top: 0;
+}
+.header .dropdown button:hover {
+  color: #0a58ca !important;
+  text-decoration: underline;
+}
+.header .dropdown button::after {
+  vertical-align: 2px;
+}
+.header .ng-fa-icon {
+  color: #777;
+}
+.header .user-wrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.header .users-link {
+  padding-left: 35px;
+}
+.header .user-wrap-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/*# sourceMappingURL=header.component.css.map */
