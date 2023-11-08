@@ -46,13 +46,14 @@
             <td width='40x' class='text-center' matTooltip='Modificare' matTooltipPosition='left'>
               <fa-icon class='text-primary' [icon]='faEdit'></fa-icon>
             </td>
-            <td width='30px' class='text-center' matTooltip='Ștergere' matTooltipPosition='left'>
+            <td width='30px' (click)='delete(r)' class='text-center' matTooltip='Ștergere' matTooltipPosition='left'>
               <fa-icon class='text-danger' [icon]='faTrashAlt'></fa-icon>
             </td>
           </tr>
-          <!--          <tr colspan='15' class='text-center fw-bold'>-->
-          <!--            <td>Date inexistente!</td>-->
-          <!--          </tr>-->
+
+<!--          <tr class='text-center fw-bold'>-->
+<!--            <td>Date inexistente!</td>-->
+<!--          </tr>-->
           </tbody>
         </table>
       </div>
