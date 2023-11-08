@@ -2,7 +2,7 @@
 <div class="col-12 mt-2 width-1220">
   <div class='row'>
     <div class='col-4'>
-      <button class='btn btn-primary btn-sm' type='button'>
+      <button class='btn btn-primary btn-sm' type='button' (click)='addEdit()'>
         <fa-icon [icon]='faPlus'></fa-icon> Adaugă
       </button>
     </div>
@@ -30,7 +30,7 @@
     </div>
 
     <div class='col-12 position-relative width-1220'>
-      <div id='view' class='view-scroll-informations' style='max-height: 60vh;' [scrollWindow]='false' infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="30">
+      <div id='view' style='max-height: 60vh;' [scrollWindow]='false' infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="30">
         <button type='button' id='back-top'>
           <fa-icon [icon]='faChevronUp'></fa-icon>
         </button>
