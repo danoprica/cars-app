@@ -28,7 +28,13 @@ export class CarModalComponent implements OnInit {
 
   save(): void {
     this._spinner.show();
-
+    if (this.modal.engine <= 1500){
+      this.modal.tax = 50;
+    } else if (this.modal.engine > 1500 && this.modal.engine <= 2000) {
+      this.modal.tax = 100;
+    } else {
+      this.modal.tax = 200;
+    }
     if (!this.id_car) {
       axios.post('/api/car', this.modal).then(() => {
         this._spinner.hide();
