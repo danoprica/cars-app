@@ -28,6 +28,19 @@ export class PersonComponent implements OnInit {
     })
   }
 
+  delete = (person: any): void => {
+    const modalRef = this._modal.open(ConfirmDialogComponent, {size: 'lg', keyboard: false, backdrop: 'static'});
+    modalRef.componentInstance.title = `Ștergere informație`;
+    modalRef.componentInstance.content = `<p class='text-center mt-1 mb-1'>Doriți să ștergeți persoana cu numele <b>${person.first_name}</b> <b>${person.last_name}</b>?`;
+    modalRef.closed.subscribe(() => {
+      axios.delete(`/api/person/${person.id}`).then(() => {
+        this.toastr.success('Persoana a fost ștearsă cu succes!');
+        this.loadData();
+      }).catch(() => this.toastr.error('Eroare la ștergerea persoanei!'));
+    });
+  }
+
+
   protected readonly faPlus = faPlus;
   protected readonly faChevronUp = faChevronUp;
   protected readonly faEdit = faEdit;
