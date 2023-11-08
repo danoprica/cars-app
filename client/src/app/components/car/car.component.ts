@@ -58,6 +58,7 @@ export class CarComponent implements OnInit {
 
 
 
+
   protected readonly faChevronUp = faChevronUp;
   protected readonly faEdit = faEdit;
   protected readonly faPlus = faPlus;
