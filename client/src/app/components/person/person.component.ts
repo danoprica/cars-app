@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SET_HEIGHT} from "../../utils/utils-table";
+import {PersonModalComponent} from "./person-modal/person-modal.component";
 
 @Component({
   selector: 'app-person',
@@ -26,6 +27,14 @@ export class PersonComponent implements OnInit {
     axios.get('/api/person').then(({ data }) => {
       this.persons = data;
     })
+  }
+
+  addEdit = (id_person?: number): void => {
+    const modalRef = this._modal.open(PersonModalComponent, {size: 'lg', keyboard: false, backdrop: 'static'});
+    modalRef.componentInstance.id_person = id_person;
+    modalRef.closed.subscribe(() => {
+      this.loadData();
+    });
   }
 
   delete = (person: any): void => {
