@@ -1,0 +1,31 @@
+<div class='modal-header'>
+  <h4 class='modal-title'>{{id_car ? 'Modificare' : 'Adăugare'}} mașina</h4>
+</div>
+
+<div class='modal-body'>
+  <div class='row'>
+    <label class='col-2 control-label'>Marcă*</label>
+    <div class='col-9'>
+      <input [(ngModel)]='modal.brand_name' class='form-control' placeholder='Marcă...' maxlength='200' />
+    </div>
+    <label class='col-2 control-label'>Model*</label>
+    <div class='col-9'>
+      <input [(ngModel)]='modal.model_name' class='form-control' placeholder='Model...' maxlength='200' />
+    </div>
+    <label class='col-2 control-label'>An de fabricație*</label>
+    <div class='col-9'>
+      <input [(ngModel)]='modal.production_year' class='form-control' placeholder='An de fabricație...' maxlength='200' />
+    </div>
+    <label class='col-2 control-label'>Capacitate cilindrică*</label>
+    <div class='col-9'>
+      <input [(ngModel)]='modal.engine' class='form-control' placeholder='Capacitate cilindrică...' maxlength='200' />
+    </div>
+  </div>
+
+
+</div>
+
+<div class='modal-footer'>
+  <button type='button' class='btn btn-outline-dark' (click)='activeModal.dismiss()'>Renunță</button>
+  <button type='button' class='btn btn-success' (click)='save()'>Salvează</button>
+</div>

@@ -43,10 +43,10 @@
             <td width='120px' class='text-center'>{{r.production_year}}</td>
             <td width='140px' class='text-center'>{{r.engine}}</td>
             <td class='text-center'>{{r.tax}}</td>
-            <td width='40x' class='text-center' matTooltip='Modificare' matTooltipPosition='left'>
+            <td width='35x' (click)='addEdit(r.id)' class='text-center' matTooltip='Modificare' matTooltipPosition='left'>
               <fa-icon class='text-primary' [icon]='faEdit'></fa-icon>
             </td>
-            <td width='30px' (click)='delete(r)' class='text-center' matTooltip='Ștergere' matTooltipPosition='left'>
+            <td width='35px' (click)='delete(r)' class='text-center' matTooltip='Ștergere' matTooltipPosition='left'>
               <fa-icon class='text-danger' [icon]='faTrashAlt'></fa-icon>
             </td>
           </tr>

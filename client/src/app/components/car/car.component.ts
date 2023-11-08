@@ -6,6 +6,7 @@ import { SCROLL_TOP, SET_HEIGHT } from 'src/app/utils/utils-table';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import {CarModalComponent} from "./car-modal/car-modal.component";
 
 @Component({
   selector: 'app-car',
@@ -30,6 +31,15 @@ export class CarComponent implements OnInit {
     })
   }
 
+
+  addEdit = (id_car?: number): void => {
+    const modalRef = this._modal.open(CarModalComponent, {size: 'lg', keyboard: false, backdrop: 'static'});
+    modalRef.componentInstance.id_car = id_car;
+    modalRef.closed.subscribe(() => {
+      this.loadData();
+    });
+  }
+
   delete = (car: any): void => {
     const modalRef = this._modal.open(ConfirmDialogComponent, {size: 'lg', keyboard: false, backdrop: 'static'});
     modalRef.componentInstance.title = `Ștergere informație`;
@@ -44,6 +54,9 @@ export class CarComponent implements OnInit {
       }).catch(() => this.toastr.error('Eroare la ștergerea informației!'));
     });
   }
+
+
+
 
 
   protected readonly faChevronUp = faChevronUp;
