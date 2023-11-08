@@ -21,6 +21,6 @@ module.exports = (sequelize, DataType) => {
     }, {
         timestamps: true
     });
-
+    model.belongsTo(sequelize.models.Person, {foreignKey: 'id_person', onDelete: 'set null'});
     return model;
 };
