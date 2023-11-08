@@ -50,10 +50,9 @@
               <fa-icon class='text-danger' [icon]='faTrashAlt'></fa-icon>
             </td>
           </tr>
-
-<!--          <tr class='text-center fw-bold'>-->
-<!--            <td>Date inexistente!</td>-->
-<!--          </tr>-->
+          <tr *ngIf='!cars.length' class='text-center fw-bold'>
+            <td>Date inexistente!</td>
+          </tr>
           </tbody>
         </table>
       </div>
