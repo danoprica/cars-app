@@ -15,6 +15,7 @@ import {PersonModalComponent} from "./person-modal/person-modal.component";
 })
 export class PersonComponent implements OnInit {
   persons: any = [];
+  cars: any = [];
   showBackTop: string = '';
   limit: number = 70;
   constructor(private _modal: NgbModal, private _spinner: NgxSpinnerService, private toastr: ToastrService) { SET_HEIGHT('view', 20, 'height'); }
@@ -26,6 +27,9 @@ export class PersonComponent implements OnInit {
   loadData = (): void => {
     axios.get('/api/person').then(({ data }) => {
       this.persons = data;
+    })
+    axios.get('/api/car').then(({ data }) => {
+      this.cars = data;
     })
   }
 
