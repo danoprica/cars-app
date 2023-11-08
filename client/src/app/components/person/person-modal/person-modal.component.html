@@ -1,5 +1,5 @@
 <div class='modal-header'>
-  <h4 class='modal-title'>{{id_person ? 'Modificare' : 'Adăugare'}} mașina</h4>
+  <h4 class='modal-title'>{{id_person ? 'Modificare' : 'Adăugare'}} persoană</h4>
 </div>
 
 <div class='modal-body'>
@@ -16,7 +16,13 @@
     <div class='col-9'>
       <input [(ngModel)]='modal.cnp' class='form-control' placeholder='CNP' maxlength='200' />
     </div>
+    <label class='col-2 control-label'>Mașini</label>
+    <div class='col-9'>
+    <ng-select placeholder='Masini' [multiple]='true'>
+      <ng-option *ngFor='let r of cars' [value]='r.id'>{{r.brand_name}} {{r.model_name}} {{r.id}}</ng-option>
+    </ng-select>
   </div>
+</div>
 
 
 </div>
