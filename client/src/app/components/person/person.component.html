@@ -39,11 +39,11 @@
             <td width='180px' class='text-center'>{{r.first_name}} {{r.last_name}}</td>
             <td width='160px' class='text-center'>{{r.cnp}}</td>
             <td>
-              <span *ngFor='let car of cars'>
-                <ng-template [ngIf]='car.id_person === r.id'>
+              <ng-template ngFor let-car [ngForOf]='cars'>
+                <span *ngIf='car.id_person === r.id'>
                   {{car.brand_name}} {{car.model_name}} {{car.id}}
-                </ng-template>
-              </span>
+                </span>
+              </ng-template>
             </td>
             <td width='35x' class='text-center' matTooltip='Modificare' matTooltipPosition='left' (click)='addEdit(r.id)'>
               <fa-icon class='text-primary' [icon]='faEdit'></fa-icon>
