@@ -37,19 +37,36 @@ export class PersonModalComponent implements OnInit {
   save(): void {
     this._spinner.show();
     console.log(this.cars);
-    if (!this.id_person) {
-      axios.post('/api/person', this.modal).then(() => {
-        this._spinner.hide();
-        this.toastr.success('Informația a fost salvată cu succes!');
-        this.activeModal.close();
-      }).catch(() => this.toastr.error('Eroare la salvarea informației!'));
-    } else {
-      axios.put('/api/person', this.modal).then(() => {
-        this._spinner.hide();
-        this.toastr.success('Informația a fost modificată cu succes!');
-        this.activeModal.close();
-      }).catch(() => this.toastr.error('Eroare la modifipersonea informației!'));
+    this.cars.id_person = this.id_person;
+    let data = {
+      'id': this.cars.id,
+      'id_person': this.cars.id_person
     }
+    console.log(this.cars);
+    console.log(data);
+    // if (this.cars) {
+    // axios.put(`/api/cars/${this.cars.id}`, data)
+    // }
+
+    axios.put('/api/car', data).then(() => {
+      this._spinner.hide();
+      this.toastr.success('Informația a fost salvată cu succes!');
+      this.activeModal.close();
+    }).catch(() => this.toastr.error('Eroare la salvarea informației!'));
+
+    // if (!this.id_person) {
+    //   axios.post('/api/person', this.modal).then(() => {
+    //     this._spinner.hide();
+    //     this.toastr.success('Informația a fost salvată cu succes!');
+    //     this.activeModal.close();
+    //   }).catch(() => this.toastr.error('Eroare la salvarea informației!'));
+    // } else {
+    //   axios.put('/api/person', this.modal).then(() => {
+    //     this._spinner.hide();
+    //     this.toastr.success('Informația a fost modificată cu succes!');
+    //     this.activeModal.close();
+    //   }).catch(() => this.toastr.error('Eroare la modifipersonea informației!'));
+    // }
   }
 
 }
