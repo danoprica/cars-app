@@ -6,7 +6,7 @@
   <div class='row'>
     <label class='col-2 control-label'>Nume*</label>
     <div class='col-9'>
-      <input [(ngModel)]='modal.last_name' class='form-control' placeholder='Nume' maxlength='200' />
+      <input [(ngModel)]='modal.last_name' class='form-control' placeholder='Nume' maxlength='200'/>
     </div>
     <label class='col-2 control-label'>Prenume*</label>
     <div class='col-9'>
@@ -16,16 +16,22 @@
     <div class='col-9'>
       <input [(ngModel)]='modal.cnp' class='form-control' placeholder='CNP' maxlength='200' />
     </div>
-    <label class='col-2 control-label'>Mașini</label>
-    <div class='col-9'>
-    <ng-select placeholder='Masini' [multiple]='true'>
-      <ng-template ngFor let-r [ngForOf]='cars'>
-        <ng-option *ngIf='r.id_person === id_person || r.id_person === null'>
-          {{r.brand_name}} {{r.model_name}} {{r.id}}
-        </ng-option>
-      </ng-template>
-    </ng-select>
-  </div>
+    <ng-template [ngIf]='id_person !== undefined'>
+      <label class='col-2 control-label'>Mașini</label>
+
+      <div class='col-9'>
+<!--      <ng-select placeholder='Masini' [items]='cars' [multiple]='true' [(ngModel)]='cars'>-->
+<!--        <ng-template ngFor let-r [ngForOf]='cars'>-->
+<!--          <ng-option *ngIf='r.id_person === id_person || r.id_person === null'>-->
+<!--            {{r.brand_name}} {{r.model_name}} {{r.id}}-->
+<!--          </ng-option>-->
+<!--        </ng-template>-->
+<!--      </ng-select>-->
+          <ng-select [items]='cars' [(ngModel)]='carsModal' [multiple]='true' bindLabel='id'>
+
+          </ng-select>
+    </div>
+    </ng-template>
 </div>
 
 
