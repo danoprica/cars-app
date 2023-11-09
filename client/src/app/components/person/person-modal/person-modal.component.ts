@@ -12,6 +12,7 @@ export class PersonModalComponent implements OnInit {
   @Input() id_person: number | undefined;
   cars: any = [];
   carsModal: any = [];
+  carsModalToRemove: any = [];
   modal = {} as any;
 
   constructor(private _spinner: NgxSpinnerService, public activeModal: NgbActiveModal, private toastr: ToastrService) {
@@ -34,12 +35,28 @@ export class PersonModalComponent implements OnInit {
     axios.get('/api/car').then(({ data }) => {
       this.cars = data;
       this.carsModal = this.cars.filter((car: any) => car.id_person===this.id_person);
+      this.carsModalToRemove = this.carsModal;
     })
 
   }
 
   save(): void {
     this._spinner.show();
+    console.log(this.carsModal)
+    this.carsModalToRemove = this.carsModalToRemove.filter( (car: any)=> !this.carsModal.includes(car));
+
+    this.carsModalToRemove.forEach((car: any) => {
+      car.id_person = this.id_person;
+      let data = {
+        'id': car.id,
+        'id_person': null
+      }
+      axios.put('/api/car', data).then(() => {
+        this._spinner.hide();
+        this.activeModal.close();
+      });
+    })
+
     this.carsModal.forEach((car: any) => {
       car.id_person = this.id_person;
       let data = {
@@ -51,8 +68,6 @@ export class PersonModalComponent implements OnInit {
         this.activeModal.close();
       });
     })
-
-
 
     if (!this.id_person) {
       axios.post('/api/person', this.modal).then(() => {
