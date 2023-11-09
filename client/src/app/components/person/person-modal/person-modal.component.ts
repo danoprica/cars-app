@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class PersonModalComponent implements OnInit {
   @Input() id_person: number | undefined;
   cars: any = [];
-  carsModal: any;
+  carsModal: any = [];
   modal = {} as any;
 
   constructor(private _spinner: NgxSpinnerService, public activeModal: NgbActiveModal, private toastr: ToastrService) {
@@ -19,9 +19,6 @@ export class PersonModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCars();
-    for (let car in this.cars){
-      console.log(car);
-    }
     if (this.id_person) {
       this._spinner.show();
       axios.get(`/api/person/${this.id_person}`).then(({ data }) => {
@@ -32,15 +29,17 @@ export class PersonModalComponent implements OnInit {
   }
 
 
+
   loadCars = (): void => {
     axios.get('/api/car').then(({ data }) => {
       this.cars = data;
+      this.carsModal = this.cars.filter((car: any) => car.id_person===this.id_person);
     })
+
   }
 
   save(): void {
     this._spinner.show();
-
     this.carsModal.forEach((car: any) => {
       car.id_person = this.id_person;
       let data = {
