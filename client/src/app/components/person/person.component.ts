@@ -36,6 +36,7 @@ export class PersonComponent implements OnInit {
   addEdit = (id_person?: number): void => {
     const modalRef = this._modal.open(PersonModalComponent, {size: 'lg', keyboard: false, backdrop: 'static'});
     modalRef.componentInstance.id_person = id_person;
+    console.log(id_person)
     modalRef.closed.subscribe(() => {
       this.loadData();
     });

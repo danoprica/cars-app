@@ -19,17 +19,11 @@ export class PersonModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._spinner.show()
     this.loadCars();
-    if (this.id_person) {
-      this._spinner.show();
-      axios.get(`/api/person/${this.id_person}`).then(({ data }) => {
-        this.modal = data;
-        this._spinner.hide();
-      }).catch(() => this.toastr.error('Eroare la preluarea informației!'));
-    }
+    this.loadPerson();
+    this._spinner.hide();
   }
-
-
 
   loadCars = (): void => {
     axios.get('/api/car').then(({ data }) => {
@@ -37,12 +31,27 @@ export class PersonModalComponent implements OnInit {
       this.carsModal = this.cars.filter((car: any) => car.id_person===this.id_person);
       this.carsModalToRemove = this.carsModal;
     })
+  }
 
+  loadPerson = (): void => {
+    axios.get(`/api/person/${this.id_person}`).then(({ data }) => {
+      console.log(this.id_person);
+      this.modal = {
+        'first_name': data.first_name,
+        'last_name': data.last_name,
+        'cnp': data.cnp
+      };
+
+    }).catch(() => this.toastr.error('Eroare la preluarea informației!'));
+  }
+
+
+  resetModal(): void {
+    this.activeModal.dismiss();
   }
 
   save(): void {
     this._spinner.show();
-    console.log(this.carsModal)
     this.carsModalToRemove = this.carsModalToRemove.filter( (car: any)=> !this.carsModal.includes(car));
 
     this.carsModalToRemove.forEach((car: any) => {
@@ -70,13 +79,20 @@ export class PersonModalComponent implements OnInit {
     })
 
     if (!this.id_person) {
+
       axios.post('/api/person', this.modal).then(() => {
         this._spinner.hide();
         this.toastr.success('Informația a fost salvată cu succes!');
         this.activeModal.close();
       }).catch(() => this.toastr.error('Eroare la salvarea informației!'));
-    } else {
-      axios.put('/api/person', this.modal).then(() => {
+      } else {
+      axios.put(`/api/person/${this.id_person}`,
+      {
+        'first_name': this.modal.first_name,
+        'last_name': this.modal.last_name,
+        'cnp': this.modal.cnp
+      }
+      ).then(() => {
         this._spinner.hide();
         this.toastr.success('Informația a fost modificată cu succes!');
         this.activeModal.close();

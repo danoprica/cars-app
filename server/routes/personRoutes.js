@@ -5,7 +5,7 @@ module.exports = app => {
     const router          = express.Router();
 
     router.post('/', personController.create);
-    router.put('/', personController.update);
+    router.put('/:id', personController.update);
     router.get('/', personController.findAll);
     router.get('/:id', personController.find);
     router.delete('/:id', personController.destroy);

@@ -7,7 +7,7 @@ module.exports = db => {
         },
 
         update: (req, res) => {
-            db.models.Person.update(req.body, { where: { id: req.body.id } }).then(() => {
+            db.models.Person.update(req.body, { where: { id: req.params.id } }).then(() => {
                 res.send({ success: true })
             }).catch(() => res.status(401));
         },
