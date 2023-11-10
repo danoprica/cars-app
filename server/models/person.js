@@ -7,7 +7,7 @@ module.exports = (sequelize, DataType) => {
             type: DataType.TEXT
         },
         cnp: {
-            type: DataType.INTEGER,
+            type: DataType.BIGINT,
             maxLength: 13
         },
         age: {
