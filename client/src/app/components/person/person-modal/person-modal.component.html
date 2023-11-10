@@ -6,15 +6,15 @@
   <div class='row'>
     <label class='col-2 control-label'>Nume*</label>
     <div class='col-9'>
-      <input [(ngModel)]='modal.last_name' class='form-control' placeholder='Nume' maxlength='200'/>
+      <input [(ngModel)]='modal.last_name' required class='form-control' placeholder='Nume' maxlength='200'/>
     </div>
     <label class='col-2 control-label'>Prenume*</label>
     <div class='col-9'>
-      <input [(ngModel)]='modal.first_name' class='form-control' placeholder='Prenume' maxlength='200' />
+      <input [(ngModel)]='modal.first_name' required class='form-control' placeholder='Prenume' maxlength='200' />
     </div>
     <label class='col-2 control-label'>CNP*</label>
     <div class='col-9'>
-      <input [(ngModel)]='modal.cnp' class='form-control' placeholder='CNP' maxlength='200' />
+      <input [(ngModel)]='modal.cnp' class='form-control' placeholder='CNP' minlength='13' maxlength='13' />
     </div>
     <ng-template [ngIf]='id_person !== undefined'>
       <label class='col-2 control-label'>Mașini</label>

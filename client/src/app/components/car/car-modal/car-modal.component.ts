@@ -42,7 +42,7 @@ export class CarModalComponent implements OnInit {
         this.activeModal.close();
       }).catch(() => this.toastr.error('Eroare la salvarea informației!'));
     } else {
-      axios.put('/api/car', this.modal).then(() => {
+      axios.put(`/api/car/${this.id_car}`, this.modal).then(() => {
         this._spinner.hide();
         this.toastr.success('Informația a fost modificată cu succes!');
         this.activeModal.close();

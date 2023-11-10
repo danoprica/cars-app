@@ -7,7 +7,7 @@ module.exports = db => {
         },
 
         update: (req, res) => {
-            db.models.Car.update(req.body, { where: { id: req.body.id } }).then(() => {
+            db.models.Car.update(req.body, { where: { id: req.params.id } }).then(() => {
                 res.send({ success: true })
             }).catch(() => res.status(401));
         },
@@ -22,7 +22,7 @@ module.exports = db => {
 
         find: (req, res) => {
             db.query(`SELECT id, brand_name, model_name, production_year, engine, tax, id_person
-            FROM "Car"`, { type: db.QueryTypes.SELECT }).then(resp => {
+            FROM "Car" WHERE id = ${req.params.id}`, { type: db.QueryTypes.SELECT }).then(resp => {
                 res.send(resp[0]);
             }).catch(() => res.status(401));
         },
