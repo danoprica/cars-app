@@ -19,10 +19,11 @@ export class PersonModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._spinner.show()
-    this.loadCars();
-    this.loadPerson();
-    this._spinner.hide();
+    if (this.id_person) {
+      this._spinner.show();
+      this.loadCars();
+      this.loadPerson();
+    }
   }
 
   loadCars = (): void => {
@@ -35,13 +36,14 @@ export class PersonModalComponent implements OnInit {
 
   loadPerson = (): void => {
     axios.get(`/api/person/${this.id_person}`).then(({ data }) => {
-      console.log(this.id_person);
+      console.log(this.id_person)
+      console.log(data);
       this.modal = {
         'first_name': data.first_name,
         'last_name': data.last_name,
         'cnp': data.cnp
       };
-
+      this._spinner.hide();
     }).catch(() => this.toastr.error('Eroare la preluarea informației!'));
   }
 

@@ -21,8 +21,8 @@ module.exports = db => {
         },
 
         find: (req, res) => {
-            db.query(`SELECT id, id, first_name, last_name, cnp, age
-            FROM "Person"`, { type: db.QueryTypes.SELECT }).then(resp => {
+            db.query(`SELECT id, first_name, last_name, cnp, age
+            FROM "Person" WHERE id = ${req.params.id}`, { type: db.QueryTypes.SELECT }).then(resp => {
                 res.send(resp[0]);
             }).catch(() => res.status(401));
         },
